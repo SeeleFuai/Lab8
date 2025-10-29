@@ -6,46 +6,41 @@ void swap(int *a, int *b) {
     *a = *b;
     *b = temp;
 }
-
-void interchangeSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (arr[i] > arr[j]) {
-                swap(&arr[i], &arr[j]);
-            }
-        }
-    }
-}
-
 void printArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
+    }
+
+void interchangeSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            printf("\nComparing arr[%d]=%d and arr[%d]=%d\n", i, arr[i], j, arr[j]);
+            if (arr[i] > arr[j]) {
+                printf("Swapping arr[%d]=%d and arr[%d]=%d\n", i, arr[i], j, arr[j]);
+                swap(&arr[i], &arr[j]);
+                printArray(arr, n);
+            }
+            else 
+            {
+                printf("No swap needed\n");
+                printArray(arr, n);
+            }
+        }
+    }
 }
 
+
+
+
+
 int main() {
-    int n;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    int *arr = (int *)malloc(n * sizeof(int));
-    if (arr == NULL) {
-        printf("Memory allocation failed\n");
-        return 1;
-    }
-
-    printf("Enter %d integers:\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    interchangeSort(arr, n);
+    int A[] = {7, 9, 10, -4, 5, 8, 2, 1};
+    int n = sizeof(A) / sizeof(A[0]);
+    interchangeSort(A, n);
 
     printf("Sorted array:\n");
-    printArray(arr, n);
-
-    free(arr);
+    printArray(A, n);
     return 0;
 }
